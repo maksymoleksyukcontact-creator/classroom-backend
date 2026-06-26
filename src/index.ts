@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/", (_req, res) => {
+app.get("/", (req, res) => {
 	res.json({ message: "Hello from Classroom backend!" });
 });
 
