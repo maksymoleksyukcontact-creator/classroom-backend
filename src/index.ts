@@ -1,3 +1,14 @@
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const apm= require("apminsight");
+
+apm({
+	licenseKey: process.env.APM_LICENSE_KEY,
+	appName: process.env.APM_APP_NAME,
+	logging: "debug"
+});
+
 import express from "express";
 import { subjectsRouter } from "./routes/index.js";
 import cors from "cors";
