@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { db } from '../db/index.js';
 import { departments, subjects } from '../db/schema/app.js';
 import { and, eq, getTableColumns, ilike, or, sql } from 'drizzle-orm';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
         const whereClause = filterConditions.length > 0 ? and(...filterConditions) : undefined;
 
         const countResult = await db
-            .select({ count: sql`count(*)` })
+            .select({ count: sql<number>`count(*)` })
             .from(subjects)
             .leftJoin(departments, eq(departments.id, subjects.departmentId))
             .where(whereClause);

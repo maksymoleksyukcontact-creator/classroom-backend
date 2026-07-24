@@ -1,4 +1,6 @@
-import type { NextFunction } from "express";
+import type { Request, Response, NextFunction } from "express";
+import { client } from "../config/arcjet.js";
+import type { ArcjetNodeRequest } from "@arcjet/node";
 
 export const securityMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
